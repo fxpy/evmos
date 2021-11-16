@@ -13,7 +13,7 @@ if [ -f "$bash_profile" ]; then
     . $HOME/.bash_profile
 fi
 
-function setupVars {
+{
   if [ ! $EVMOS_NODENAME ]; then
     read -p "Enter node name: " EVMOS_NODENAME
     echo 'export EVMOS_NODENAME='\"${EVMOS_NODENAME}\" >> $HOME/.bash_profile
