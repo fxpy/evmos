@@ -3,31 +3,22 @@ exists()
 {
   command -v "$1" >/dev/null 2>&1
 }
-if exists curl; then
-  echo ''
-else
-  sudo apt install curl -y < "/dev/null"
-fi
+
 bash_profile=$HOME/.bash_profile
 if [ -f "$bash_profile" ]; then
     . $HOME/.bash_profile
 fi
 
-{
-  if [ ! $EVMOS_NODENAME ]; then
-    read -p "Enter node name: " EVMOS_NODENAME
-    echo 'export EVMOS_NODENAME='\"${EVMOS_NODENAME}\" >> $HOME/.bash_profile
-  fi
-  if [ ! $EVMOS_WALLET ]; then
-    read -p "Enter wallet name: " EVMOS_WALLET
-    echo 'export EVMOS_WALLET='\"${EVMOS_WALLET}\" >> $HOME/.bash_profile
-  fi
-  echo -e '\n\e[42mYour wallet name:' $EVMOS_WALLET '\e[0m\n'
-  echo 'export EVMOS_CHAIN=evmos_9000-2' >> $HOME/.bash_profile
-  echo 'source $HOME/.bashrc' >> $HOME/.bash_profile
-  . $HOME/.bash_profile
-  sleep 1
-}
+read -p "Enter node name: " EVMOS_NODENAME
+echo 'export EVMOS_NODENAME='\"${EVMOS_NODENAME}\" >> $HOME/.bash_profile
+
+read -p "Enter wallet name: " EVMOS_WALLET
+echo 'export EVMOS_WALLET='\"${EVMOS_WALLET}\" >> $HOME/.bash_profile
+
+echo -e '\n\e[42mYour wallet name:' $EVMOS_WALLET '\e[0m\n'
+echo 'export EVMOS_CHAIN=evmos_9000-2' >> $HOME/.bash_profile
+echo 'source $HOME/.bashrc' >> $HOME/.bash_profile
+. $HOME/.bash_profile
 
 
 # Update if needed
