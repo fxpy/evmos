@@ -44,15 +44,14 @@ rm -r evmos
 git clone https://github.com/tharsis/evmos.git
 cd evmos
 
-git checkout v0.1.3
-
-# git checkout -b XXX tags/XXXXX
+git checkout v0.2.0
 
 make install
-cd
 
-# delete old genesis if exsist
+# delete old genesis if exist
 rm $HOME/.evmosd/config/genesis.json
 
 # init
 evmosd init ${EVMOS_NODENAME} --chain-id $EVMOS_CHAIN
+
+echo 'Please restore your wallet and perform genTX'
