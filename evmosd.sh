@@ -54,4 +54,7 @@ rm $HOME/.evmosd/config/genesis.json
 # init
 evmosd init ${EVMOS_NODENAME} --chain-id $EVMOS_CHAIN
 
+evmosd config chain-id evmos_9000-2
+evmosd config keyring-backend file
+
 echo 'Please restore your wallet and perform genTX'
